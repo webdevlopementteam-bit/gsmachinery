@@ -14,9 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://petbottlemakingmachines.com"),
   title: "Best Pet Bottle Making Machine Manufacturer in Delhi | GS Machinery",
   description: "Looking for a trusted Pet Bottle Making Machine manufacturer in Delhi? GS Machinery has been making reliable, ISO-certified PET blowing machines since 2008. Get the best price today.",
   keywords: "Pet Bottle Making Machine, Pet Bottle Making Machine Manufacturer, Pet Bottle Making Machine Manufacturer in Delhi, GS Machinery",
+  alternates: {
+    canonical: "https://petbottlemakingmachines.com/",
+  },
   icons: {
     icon: "/logo.jpeg",
     shortcut: "/logo.jpeg",
