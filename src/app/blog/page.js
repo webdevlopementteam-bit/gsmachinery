@@ -5,9 +5,8 @@ import WhatsAppButton from "@/components/FloatingButton";
 import { getAllPosts, formatDate, SITE_URL } from "@/blogs";
 
 export const metadata = {
-  title: "Blog | PET Bottle Making Machine Guides & Prices | GS Machinery",
-  description:
-    "Guides, price lists and buying tips for PET bottle making machines, blow moulding machines and bottling plants from GS Machinery, Delhi.",
+  title: "Blog - GS Machinery",
+  description: null,
   alternates: { canonical: `${SITE_URL}/blog` },
 };
 
