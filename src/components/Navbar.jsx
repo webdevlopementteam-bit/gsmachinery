@@ -15,19 +15,23 @@ export default function Navbar() {
     },
     {
       title: "About",
-      href: "#about",
+      href: "/#about",
     },
     {
       title: "PRODUCT",
-      href: "#top-products",
+      href: "/#top-products",
     },
     {
       title: "Gallery",
-      href: "#gallery",
+      href: "/#gallery",
+    },
+    {
+      title: "BLOG",
+      href: "/blog",
     },
     {
       title: "CONTACT",
-      href: "#contact",
+      href: "/#contact",
     },
   ];
 

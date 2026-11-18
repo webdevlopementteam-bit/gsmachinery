@@ -8,6 +8,7 @@ import {
   FaPaperPlane,
   FaGlobeAsia,
 } from "react-icons/fa";
+import { submitEnquiry } from "@/lib/web3forms";
 
 const contactInfo = [
   {
@@ -41,16 +42,26 @@ export default function ContactUsSection() {
     phone: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", message: "" });
+    setStatus("sending");
+    try {
+      const ok = await submitEnquiry(form, "Contact Form");
+      if (ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -115,7 +126,14 @@ export default function ContactUsSection() {
 
           {/* Contact form */}
           <div className="lg:col-span-3 bg-white rounded-2xl shadow-md p-8 sm:p-10">
-            {submitted && (
+            {status === "error" && (
+              <div className="mb-6 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                Something went wrong. Please try again or call us at +91
+                8588966670.
+              </div>
+            )}
+
+            {status === "success" && (
               <div className="mb-6 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-700">
                 Thank you! Your message has been received — our team will get
                 back to you shortly.
@@ -186,9 +204,10 @@ export default function ContactUsSection() {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 bg-[#b99631] hover:bg-[#232831] text-white font-semibold uppercase tracking-wide text-sm px-8 py-3 transition-colors duration-300"
+                disabled={status === "sending"}
+                className="disabled:opacity-60 inline-flex items-center gap-2 bg-[#b99631] hover:bg-[#232831] text-white font-semibold uppercase tracking-wide text-sm px-8 py-3 transition-colors duration-300"
               >
-                Send Message
+                {status === "sending" ? "Sending..." : "Send Message"}
                 <FaPaperPlane size={13} />
               </button>
             </form>

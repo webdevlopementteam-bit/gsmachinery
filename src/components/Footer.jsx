@@ -18,6 +18,7 @@ export default function Footer() {
     { title: "Home", href: "/" },
     { title: "Products", href: "/#top-products" },
     { title: "Gallery", href: "/#gallery" },
+    { title: "Blog", href: "/blog" },
     { title: "Contact", href: "/#contact" },
     { title: "About", href: "/#about" },
   ];
