@@ -7,6 +7,7 @@ import { getAllPosts, formatDate, SITE_URL } from "@/blogs";
 export const metadata = {
   title: "Blog - GS Machinery",
   description: null,
+  keywords: null,
   alternates: { canonical: `${SITE_URL}/blog` },
 };
 
